@@ -1,49 +1,35 @@
--- return {
---   require("lspconfig").solargraph.setup({
---     cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", "stdio" },
---     filetypes = { "ruby" },
---     init_options = { formatting = true },
---     settings = {
---       solargraph = {
---         diagnostics = true,
---       },
---     },
---     -- root_dir = { root_pattern("Gemfile", ".git") },
---   }),
--- }
+local util = require("lspconfig.util")
 
--- local util = require("lspconfig.util")
---
--- return {
---   {
---     "neovim/nvim-lspconfig",
---
---     default_config = {
---       cmd = { "solargraph", "stdio" },
---       settings = {
---         solargraph = {
---           diagnostics = true,
---         },
---       },
---       init_options = { formatting = true },
---       filetypes = { "ruby" },
---       root_dir = util.root_pattern("Gemfile", ".git"),
---     },
---     docs = {
---       description = [[
--- https://solargraph.org/
---
--- solargraph, a language server for Ruby
---
--- You can install solargraph via gem install.
---
--- ```sh
--- gem install --user-install solargraph
--- ```
---     ]],
---       default_config = {
---         root_dir = [[root_pattern("Gemfile", ".git")]],
---       },
---     },
---   },
--- }
+ return {
+   {
+     "neovim/nvim-lspconfig",
+
+     default_config = {
+       cmd = { "solargraph", "stdio" },
+       settings = {
+         solargraph = {
+           diagnostics = true,
+         },
+       },
+       init_options = { formatting = true },
+       filetypes = { "ruby" },
+       root_dir = util.root_pattern("Gemfile", ".git"),
+     },
+     docs = {
+       description = [[
+ https://solargraph.org/
+
+ solargraph, a language server for Ruby
+
+ You can install solargraph via gem install.
+
+ ```sh
+ gem install --user-install solargraph
+ ```
+     ]],
+       default_config = {
+         root_dir = [[root_pattern("Gemfile", ".git")]],
+       },
+     },
+   },
+ }
